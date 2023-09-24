@@ -34,7 +34,7 @@
 ![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/rainbow.png)
 
 # Temas
-## Parte
+## Parte 1
 1. Datasources
 * Implementaciones
 * Abastracciones
@@ -48,6 +48,12 @@
 * StateNotifierProvider
 * Notifiers
 6. Mappers
+
+## Parte 2
+* Películas populares
+* Películas en cines
+* Películas mejor calificadas
+* Películas que próximamente estarán en cines
 
 # Dev
 
