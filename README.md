@@ -59,3 +59,6 @@
 
 1. Copiar el .env.template y renombrarlo a .env
 2. Cambiar las variables de entorno (The MovieDB)
+
+# Librerias
+* [card_swiper](https://pub.dev/packages/card_swiper)
