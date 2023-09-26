@@ -188,7 +188,6 @@ class _ActorsByMovie extends ConsumerWidget {
         },
       ),
     );
-
   }
 }
 
