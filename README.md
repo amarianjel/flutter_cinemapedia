@@ -68,6 +68,17 @@ Continuación
 7. Builders
 8. DRY
 9. Providers
+
+## Parte 5
+1. Navegación entre tabs
+2. Preservar estado
+3. Go_Router
+* Redirect
+* ShellRoute
+* SubShellRoutes
+
+
+
 # Dev
 
 1. Copiar el .env.template y renombrarlo a .env
