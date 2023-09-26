@@ -55,6 +55,19 @@
 * Películas mejor calificadas
 * Películas que próximamente estarán en cines
 
+## Parte 3
+Continuación
+
+## Parte 4
+1. SearchDelegate
+2. Datasources
+3. Repositorios
+4. Búsquedas contra TheMovieDB
+5. Debouncer
+6. Streams
+7. Builders
+8. DRY
+9. Providers
 # Dev
 
 1. Copiar el .env.template y renombrarlo a .env
