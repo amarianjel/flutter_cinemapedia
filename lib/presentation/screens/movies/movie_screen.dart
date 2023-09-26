@@ -187,17 +187,13 @@ class _ActorsByMovie extends ConsumerWidget {
                 Text(actor.character ?? '', 
                   maxLines: 2,
                   style: const TextStyle( fontWeight: FontWeight.bold, overflow: TextOverflow.ellipsis ),
-              ),
-
+                ),
               ],
             ),
           );
-
-
         },
       ),
     );
-
   }
 }
 
