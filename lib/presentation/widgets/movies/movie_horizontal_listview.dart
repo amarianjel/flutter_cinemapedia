@@ -7,11 +7,10 @@ import 'package:go_router/go_router.dart';
 
 class MovieHorizontalListview extends StatefulWidget {
 
-  // DONE: Argumentos a ocupar
   final List<Movie> movies;
   final String? title;
   final String? subTitle;
-  final VoidCallback? loadNextPage; //+ Para saber la siguiente página
+  final VoidCallback? loadNextPage;
 
   const MovieHorizontalListview({
     super.key,
@@ -20,11 +19,13 @@ class MovieHorizontalListview extends StatefulWidget {
     this.subTitle,
     this.loadNextPage
   });
+
   @override
   State<MovieHorizontalListview> createState() => _MovieHorizontalListviewState();
 }
 
 class _MovieHorizontalListviewState extends State<MovieHorizontalListview> {
+
 
   final scrollController = ScrollController();
 
@@ -38,7 +39,9 @@ class _MovieHorizontalListviewState extends State<MovieHorizontalListview> {
       if ( (scrollController.position.pixels + 200) >= scrollController.position.maxScrollExtent ) {
         widget.loadNextPage!();
       }
+
     });
+
   }
 
   @override
@@ -51,13 +54,14 @@ class _MovieHorizontalListviewState extends State<MovieHorizontalListview> {
 
   @override
   Widget build(BuildContext context) {
-    return SizedBox(  //+ para no desvordar, un alto fijo
-      height: 350,  //FIXME: Aqui es para dar el desvorde, en mi pantalla falla como normal
+    return SizedBox(
+      height: 350,
       child: Column(
         children: [
 
           if ( widget.title != null || widget.subTitle != null )
             _Title(title: widget.title, subTitle: widget.subTitle ),
+
 
           Expanded(
             child: ListView.builder(
@@ -70,6 +74,7 @@ class _MovieHorizontalListviewState extends State<MovieHorizontalListview> {
               },
             )
           )
+
         ],
       ),
     );
@@ -89,7 +94,7 @@ class _Slide extends StatelessWidget {
     final textStyles = Theme.of(context).textTheme;
 
     return Container(
-      margin: const EdgeInsets.symmetric( horizontal: 8 ),
+      margin: const EdgeInsets.symmetric( horizontal: 8),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
@@ -98,7 +103,7 @@ class _Slide extends StatelessWidget {
           SizedBox(
             width: 150,
             child: ClipRRect(
-              borderRadius: BorderRadius.circular(25),
+              borderRadius: BorderRadius.circular(20),
               child: Image.network(
                 movie.posterPath,
                 fit: BoxFit.cover,
@@ -110,11 +115,11 @@ class _Slide extends StatelessWidget {
                       child: Center(child: CircularProgressIndicator(strokeWidth: 2 )),
                     );
                   }
-                  //+ Solo pinchando voy a navegar
                   return GestureDetector(
                     onTap: () => context.push('/movie/${ movie.id }'),
                     child: FadeIn(child: child),
                   );
+                  
                 },
               ),
             ),
@@ -146,6 +151,8 @@ class _Slide extends StatelessWidget {
               ],
             ),
           )
+
+
         ],
       ),
     );
@@ -165,9 +172,7 @@ class _Title extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
 
-    // final titleStyle = Theme.of(context).textTheme.titleLarge;
     final titleStyle = Theme.of(context).textTheme.titleLarge;
-
 
     return Container(
       padding: const EdgeInsets.only( top: 10),
@@ -186,6 +191,7 @@ class _Title extends StatelessWidget {
               onPressed: (){}, 
               child: Text( subTitle! )
           )
+
         ],
       ),
     );

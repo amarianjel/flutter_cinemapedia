@@ -1,22 +1,24 @@
-import 'package:cinemapedia/presentation/widgets/widgets.dart';
 import 'package:flutter/material.dart';
-import '../../views/views.dart';
+import 'package:cinemapedia/presentation/widgets/widgets.dart';
+
+
 
 class HomeScreen extends StatelessWidget {
 
   static const name = 'home-screen';
-  final int pageIndex;
+
+  final Widget childView;
 
   const HomeScreen({
     super.key, 
-    required this.pageIndex
+    required this.childView
   });
 
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
-      body: HomeView(),
-      bottomNavigationBar: CustomBottomNavigation( ),
+    return Scaffold(
+      body: childView,
+      bottomNavigationBar: const CustomBottomNavigation(),
     );
   }
 }

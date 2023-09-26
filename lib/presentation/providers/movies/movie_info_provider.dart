@@ -2,7 +2,6 @@ import 'package:cinemapedia/presentation/providers/providers.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:cinemapedia/domain/entities/movie.dart';
 
-//DONE: Implementación del Provider
 final movieInfoProvider = StateNotifierProvider<MovieMapNotifier, Map<String, Movie>>((ref) {
   final movieRepository = ref.watch( movieRepositoryProvider );
   return MovieMapNotifier(getMovie: movieRepository.getMovieById );
@@ -34,4 +33,5 @@ class MovieMapNotifier extends StateNotifier<Map<String,Movie>> {
     final movie = await getMovie( movieId );
     state = { ...state, movieId: movie };
   }
+
 }

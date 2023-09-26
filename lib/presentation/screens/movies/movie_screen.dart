@@ -1,10 +1,12 @@
-import 'package:animate_do/animate_do.dart';
-import 'package:cinemapedia/domain/entities/movie.dart';
-import 'package:cinemapedia/presentation/providers/movies/movie_info_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:animate_do/animate_do.dart';
 
-import '../../providers/providers.dart';
+import 'package:cinemapedia/domain/entities/movie.dart';
+
+import 'package:cinemapedia/presentation/providers/providers.dart';
+import 'package:cinemapedia/presentation/providers/movies/movie_info_provider.dart';
+
 
 class MovieScreen extends ConsumerStatefulWidget {
 
@@ -29,6 +31,7 @@ class MovieScreenState extends ConsumerState<MovieScreen> {
     
     ref.read(movieInfoProvider.notifier).loadMovie(widget.movieId);
     ref.read(actorsByMovieProvider.notifier).loadActors(widget.movieId);
+
   }
 
   @override
@@ -39,6 +42,7 @@ class MovieScreenState extends ConsumerState<MovieScreen> {
     if ( movie == null ) {
       return const Scaffold(body: Center( child: CircularProgressIndicator( strokeWidth: 2)));
     }
+
 
     return Scaffold(
       body: CustomScrollView(
@@ -55,6 +59,7 @@ class MovieScreenState extends ConsumerState<MovieScreen> {
   }
 }
 
+
 class _MovieDetails extends StatelessWidget {
   
   final Movie movie;
@@ -67,6 +72,7 @@ class _MovieDetails extends StatelessWidget {
     final size = MediaQuery.of(context).size;
     final textStyles = Theme.of(context).textTheme;
 
+
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -77,7 +83,7 @@ class _MovieDetails extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               
-              //* Imagen
+              // Imagen
               ClipRRect(
                 borderRadius: BorderRadius.circular(20),
                 child: Image.network(
@@ -88,7 +94,7 @@ class _MovieDetails extends StatelessWidget {
 
               const SizedBox( width: 10 ),
 
-              //* Descripción
+              // Descripción
               SizedBox(
                 width: (size.width - 40) * 0.7,
                 child: Column(
@@ -105,14 +111,13 @@ class _MovieDetails extends StatelessWidget {
         ),
 
         
-        //* Generos de la película
+        // Generos de la película
         Padding(
           padding: const EdgeInsets.all(8),
           child: Wrap(
             children: [
               ...movie.genreIds.map((gender) => Container(
                 margin: const EdgeInsets.only( right: 10),
-                // TODO: Expandir: Aqui puedo buscar rutear para navegar en los generos y llevarlo a más peliculas https://developer.themoviedb.org/reference/movie-similar
                 child: Chip(
                   label: Text( gender ),
                   shape: RoundedRectangleBorder( borderRadius: BorderRadius.circular(20)),
@@ -129,6 +134,7 @@ class _MovieDetails extends StatelessWidget {
     );
   }
 }
+
 
 class _ActorsByMovie extends ConsumerWidget {
 
@@ -161,7 +167,7 @@ class _ActorsByMovie extends ConsumerWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
 
-                //* Actor Photo
+                // Actor Photo
                 FadeInRight(
                   child: ClipRRect(
                     borderRadius: BorderRadius.circular(20),
@@ -174,23 +180,30 @@ class _ActorsByMovie extends ConsumerWidget {
                   ),
                 ),
 
-                //* Nombre
+                // Nombre
                 const SizedBox(height: 5,),
 
                 Text(actor.name, maxLines: 2 ),
                 Text(actor.character ?? '', 
                   maxLines: 2,
                   style: const TextStyle( fontWeight: FontWeight.bold, overflow: TextOverflow.ellipsis ),
-                ),
+              ),
+
               ],
             ),
           );
+
+
         },
       ),
     );
 
   }
 }
+
+
+
+
 
 class _CustomSliverAppBar extends StatelessWidget {
 
@@ -260,9 +273,15 @@ class _CustomSliverAppBar extends StatelessWidget {
                 )
               ),
             ),
+
+
+
           ],
         ),
       ),
     );
   }
 }
+
+
+

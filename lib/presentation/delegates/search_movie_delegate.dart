@@ -47,7 +47,9 @@ class SearchMovieDelegate extends SearchDelegate<Movie?>{
       initialMovies = movies;
       debouncedMovies.add(movies);
       isLoadingStream.add(false);
+
     });
+
   }
 
   Widget buildResultsAndSuggestions() {
@@ -80,32 +82,39 @@ class SearchMovieDelegate extends SearchDelegate<Movie?>{
   List<Widget>? buildActions(BuildContext context) {
 
     return [
+
       StreamBuilder(
         initialData: false,
         stream: isLoadingStream.stream,
         builder: (context, snapshot) {
-          if ( snapshot.data ?? false ) {
-            return SpinPerfect(
-                duration: const Duration(seconds: 20),
-                spins: 10,
-                infinite: true,
+            if ( snapshot.data ?? false ) {
+              return SpinPerfect(
+                  duration: const Duration(seconds: 20),
+                  spins: 10,
+                  infinite: true,
+                  child: IconButton(
+                    onPressed: () => query = '', 
+                    icon: const Icon( Icons.refresh_rounded )
+                  ),
+                );
+            }
+
+             return FadeIn(
+                animate: query.isNotEmpty,
                 child: IconButton(
                   onPressed: () => query = '', 
-                  icon: const Icon( Icons.refresh_rounded )
+                  icon: const Icon( Icons.clear )
                 ),
               );
-          }
-
-          return FadeIn(
-            animate: query.isNotEmpty,
-            child: IconButton(
-              onPressed: () => query = '', 
-              icon: const Icon( Icons.clear )
-            ),
-          );
 
         },
       ),
+      
+       
+        
+
+
+
     ];
   }
 
@@ -130,7 +139,9 @@ class SearchMovieDelegate extends SearchDelegate<Movie?>{
 
     _onQueryChanged(query);
     return buildResultsAndSuggestions();
+
   }
+
 }
 
 class _MovieItem extends StatelessWidget {
@@ -194,9 +205,12 @@ class _MovieItem extends StatelessWidget {
                       ),
                     ],
                   )
+    
+                  
                 ],
               ),
             ),
+    
           ],
         ),
       ),

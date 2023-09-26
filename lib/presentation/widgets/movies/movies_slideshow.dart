@@ -6,7 +6,7 @@ import 'package:cinemapedia/domain/entities/movie.dart';
 
 class MoviesSlideshow extends StatelessWidget {
   
-  final List<Movie> movies; //+ Siempre trabajar con la lista y por eso se requerrira despues
+  final List<Movie> movies;
   
   const MoviesSlideshow({
     super.key, 
@@ -77,7 +77,7 @@ class _Slide extends StatelessWidget {
               }
               return FadeIn(child: child);
             },
-          ),
+          )
         )
       ),
     );
