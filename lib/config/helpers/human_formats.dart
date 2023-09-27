@@ -11,13 +11,12 @@ static String number( double number, [ int decimals = 0 ] ) {
     ).format(number);
   }
 
-  static String shortDate( DateTime date ) {    
-    try {
-      final format = DateFormat.yMMMEd('es');
-      return format.format(date);
-    } catch (e) {
-      return 'Fecha inválida';
-    }
+  static String shortDate( DateTime date ) {
+
+    final dateFormat = DateFormat('dd/MM/yyyy');
+    final formattedDate = dateFormat.format(date);
+
+    return formattedDate;
   }
 }
 
