@@ -191,6 +191,10 @@ class _ActorsByMovie extends ConsumerWidget {
   }
 }
 
+final isFavoriteProvider = FutureProvider.family.autoDispose((ref, int movieId) { //+ Provider de rederprod
+  final localStorageRepository = ref.watch(localStorageRepositoryProvider);
+  return localStorageRepository.isMovieFavorite(movieId);
+});
 class _CustomSliverAppBar extends ConsumerWidget {
 
   final Movie movie;
@@ -201,6 +205,8 @@ class _CustomSliverAppBar extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+
+    final isFavoriteFuture = ref.watch(isFavoriteProvider(movie.id));
 
     final size = MediaQuery.of(context).size;
 
@@ -216,19 +222,19 @@ class _CustomSliverAppBar extends ConsumerWidget {
           //   await ref.read( favoriteMoviesProvider.notifier )
           //     .toggleFavorite(movie);
             
-          //   ref.invalidate(isFavoriteProvider(movie.id));
+            ref.invalidate(isFavoriteProvider(movie.id));
 
 
           }, 
-          // icon: isFavoriteFuture.when(
-          //   loading: () => const CircularProgressIndicator(strokeWidth: 2 ),
-          //   data: (isFavorite) => isFavorite 
-          //     ? const Icon( Icons.favorite_rounded, color: Colors.red )
-          //     : const Icon( Icons.favorite_border ), 
-          //   error: (_, __) => throw UnimplementedError(), 
-          // ),
+          icon: isFavoriteFuture.when(
+            loading: () => const CircularProgressIndicator(strokeWidth: 2 ),
+            data: (isFavorite) => isFavorite 
+              ? const Icon( Icons.favorite_rounded, color: Colors.red )
+              : const Icon( Icons.favorite_border ), 
+            error: (_, __) => throw UnimplementedError(), 
+          ),
           
-          icon: const Icon( Icons.favorite_border )
+          // icon: const Icon( Icons.favorite_border )
           // icon: const Icon( Icons.favorite_rounded, color: Colors.red )
         )
       ],
