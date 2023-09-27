@@ -8,7 +8,6 @@ final actorsByMovieProvider = StateNotifierProvider<ActorsByMovieNotifier, Map<S
   return ActorsByMovieNotifier( getActors: actorsRepository.getActorsByMovie );
 });
 
-
 /*
   {
     '505642': <Actor>[],
@@ -27,7 +26,6 @@ class ActorsByMovieNotifier extends StateNotifier<Map<String,List<Actor>>> {
   ActorsByMovieNotifier({
     required this.getActors,
   }): super({});
-
 
   Future<void> loadActors( String movieId ) async {
     if ( state[movieId] != null ) return;

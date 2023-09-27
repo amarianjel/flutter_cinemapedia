@@ -12,7 +12,14 @@ static String number( double number, [ int decimals = 0 ] ) {
   }
 
   static String shortDate( DateTime date ) {    
-    final format = DateFormat.yMMMEd('es');
-    return format.format(date);
+    try {
+      final format = DateFormat.yMMMEd('es');
+      return format.format(date);
+    } catch (e) {
+      return 'Fecha inválida';
+    }
   }
 }
+
+/* final format = DateFormat.yMMMEd('es');
+    return format.format(date);*/
