@@ -56,4 +56,3 @@ class StorageMoviesNotifier extends StateNotifier<Map<int, Movie>> {
     }
   }
 }
-
