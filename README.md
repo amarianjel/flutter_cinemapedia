@@ -17,6 +17,7 @@
     <tr>
       <th>Flutter</th>
       <th>Dart</th>
+      <th>Isar DataBase</th>
     </tr>
   </thead>
   <tbody>
@@ -26,6 +27,9 @@
       </td>
       <td>
         <img src="https://i.postimg.cc/tJkfQFq2/Dart-logo-icon.svg.png" width="150px" />
+      </td>
+      <td>
+        <img src="https://isar.dev/isar.svg" width="150px" />
       </td>
     </tr>
   </tbody>
